@@ -1,16 +1,14 @@
-@import "minima"; /* Import default Minima styles */
+@import "minima"; /* Load default Minima styles */
 
-/* Override default styles with monospace dark theme */
+/* Apply monospace font globally */
 body {
     font-family: monospace;
-    background: #111;
-    color: #ddd;
     max-width: 800px;
     margin: auto;
     padding: 20px;
 }
 
-/* Ensure Minima's light/dark toggle still works */
+/* Apply proper dark/light theme switching */
 [data-theme="light"] {
     background: #fff;
     color: #000;
