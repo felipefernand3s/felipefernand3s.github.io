@@ -4,25 +4,9 @@ title: Home
 ---
 
 <div class="hero">
-  <h1>Hi, I'm <span class="highlight">Felipe</span></h1>
-  <p>
-    I'm a <span class="highlight">software engineer</span> with a passion for 
-    backend development, cloud infrastructure, and automation.
-  </p>
-  
-  <!-- A brief code snippet to showcase your style or favorite snippet -->
-  <p>
-    Here's a tiny snippet of code I wrote for <code>greeting</code>:
-  </p>
-  <pre>
-    <code>
-def greet(name):
-    return f"Hello, {name}!"
+  <h1>Hi 👋, I'm Felipe, a <code>Software Engineer</code></h1>
+  <p>Welcome to my portfolio! Here you'll find my projects, blog posts, and more about my journey in tech.</p>
 
-print(greet("World"))
-    </code>
-  </pre>
-  
   <!-- Some personal "fluff" about your experience -->
   <p>
     Over the years, I've built scalable microservices, automated CI/CD pipelines,
