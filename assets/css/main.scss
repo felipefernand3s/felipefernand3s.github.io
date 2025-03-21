@@ -1,149 +1,145 @@
---- --- html,
-html[data-theme="light"] {
-    --link-color: rgb(0, 112, 201);
-    --main-background-color: hsl(0, 0%, 90%);
-    --main-text-color: hsl(0, 0%, 20%);
+---
+---
+
+html, html[data-theme="light"] {
+	--link-color: rgb(0, 112, 201);
+  --main-background-color: hsl(0, 0%, 90%);
+  --main-text-color: hsl(0, 0%, 20%);
 }
 
 html[data-theme="dark"] {
-    --link-color: rgb(100, 210, 255);
-    --main-background-color: hsl(0, 0%, 20%);
-    --main-text-color: hsl(0, 0%, 85%);
+  --link-color: rgb( 100, 210, 255);
+  --main-background-color: hsl(0, 0%, 20%);
+  --main-text-color: hsl(0, 0%, 85%); 
 }
 
 
 @media (prefers-color-scheme: dark) {
-
-    html,
-    html[data-theme="dark"] {
-        --link-color: rgb(100, 210, 255);
-        --main-background-color: hsl(0, 0%, 20%);
-        --main-text-color: hsl(0, 0%, 85%);
+    html, html[data-theme="dark"] {
+      --link-color: rgb( 100, 210, 255);
+    	--main-background-color: hsl(0, 0%, 20%);
+    	--main-text-color: hsl(0, 0%, 85%); 
     }
 
     html[data-theme="light"] {
-        --link-color: rgb(0, 112, 201);
-        --main-background-color: hsl(0, 0%, 90%);
-        --main-text-color: hsl(0, 0%, 20%);
-    }
+		  --link-color: rgb(0, 112, 201);
+    	--main-background-color: hsl(0, 0%, 90%);
+  	 --main-text-color: hsl(0, 0%, 20%);
+  } 
 }
 
 
 body {
-    background-color: var(--main-background-color);
-    color: var(--main-text-color);
-    font-family: monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    padding: 1em;
+	background-color: var(--main-background-color);
+	color: var(--main-text-color);
+	font-family: monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	padding: 1em;
 }
 
 a {
-    color: var(--link-color);
+	color: var(--link-color);
 }
 
 article {
-    max-width: 650px;
-    margin: 2em auto;
+	max-width: 650px; 
+	margin: 2em auto;
 }
 
 
 h1 {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-top: 2em;
+	font-size: 1.5rem;
+	margin-top: 2em;
 }
 
 p {
-    font-size: 1.25rem;
+	font-size: 1.25rem;
 }
 
 
 /* Hero container: stands out with a subtle background in light mode */
 .hero {
-    margin: 2rem auto;
-    padding: var(--block-padding);
-    border-radius: 8px;
-    background-color: #e3e3e3;
-    /* Slightly darker than white for light mode */
-    text-align: center;
-    /* Center hero text */
+  margin: 2rem auto;
+  padding: var(--block-padding);
+  border-radius: 8px;
+  background-color: #e3e3e3; /* Slightly darker than white for light mode */
+  text-align: center;        /* Center hero text */
 }
 
 [data-theme="dark"] .hero {
-    background-color: #222;
-    /* Dark hero for dark mode */
+  background-color: #222;    /* Dark hero for dark mode */
 }
 
 .hero h1 {
-    margin-bottom: 0.5rem;
-    font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.4rem;
 }
 
 .hero p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #555;
 }
 
 [data-theme="dark"] .hero p {
-    color: #bbb;
+  color: #bbb;
 }
 
 /* Accent text or links within the hero */
 .hero .highlight {
-    color: var(--accent-color);
-    font-weight: bold;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
 /* Code styling for hero snippet */
 .hero code {
-    display: inline-block;
-    background: #ccc;
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    color: #222;
+  display: inline-block;
+  background: #ccc;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #222;
 }
-
 [data-theme="dark"] .hero code {
-    background: #444;
-    color: #eee;
+  background: #444;
+  color: #eee;
 }
 
 /* Generic sections for Projects and Posts */
 .section {
-    margin: 3rem auto;
+  margin: 3rem auto;
 }
 
 .section h2 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    text-decoration: underline;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-decoration: underline;
 }
 
 .card-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .card-list li {
-    background-color: #f3f3f3;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 6px;
+  background-color: #f3f3f3;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 [data-theme="dark"] .card-list li {
-    background-color: #333;
+  background-color: #333;
 }
 
 .card-list li a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-list li strong {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
