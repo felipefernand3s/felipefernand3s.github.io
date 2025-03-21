@@ -1,0 +1,19 @@
+# Ignore site output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ignore local Ruby environment and Bundler directories
+.bundle/
+vendor/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# macOS / Linux / system files
+.DS_Store
+*.bak
+*.orig

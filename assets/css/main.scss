@@ -1,76 +1,77 @@
 ---
 ---
 
+
+@import "https://unpkg.com/open-props/easings.min.css";
+
 html, html[data-theme="light"] {
-	--link-color: rgb(0, 112, 201);
-  --main-background-color: hsl(0, 0%, 90%);
-  --main-text-color: hsl(0, 0%, 20%);
+  --link-color: #2563eb;
+  --accent-color: #b67228;
+  --main-background-color: #fff9db;
+  --main-container-color: #f5f0d4;
+  --main-text-color: #250963;
 }
 
 html[data-theme="dark"] {
-  --link-color: rgb( 100, 210, 255);
-  --main-background-color: hsl(0, 0%, 20%);
-  --main-text-color: hsl(0, 0%, 85%); 
+  --link-color: #64d2ff;
+  --accent-color: #f7c948;
+  --main-background-color: #250963;
+  --main-container-color: #2f107a;
+  --main-text-color: #fff9db;
 }
-
 
 @media (prefers-color-scheme: dark) {
-    html, html[data-theme="dark"] {
-      --link-color: rgb( 100, 210, 255);
-    	--main-background-color: hsl(0, 0%, 20%);
-    	--main-text-color: hsl(0, 0%, 85%); 
-    }
+  html, html[data-theme="dark"] {
+    --link-color: #64d2ff;
+    --main-background-color: #250963;
+    --main-text-color: #fff9db;
+  }
 
-    html[data-theme="light"] {
-		  --link-color: rgb(0, 112, 201);
-    	--main-background-color: hsl(0, 0%, 90%);
-  	 --main-text-color: hsl(0, 0%, 20%);
-  } 
+  html[data-theme="light"] {
+    --link-color: #2563eb;
+    --main-background-color: #fff9db;
+    --main-text-color: #250963;
+  }
 }
 
-
 body {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	font-family: "Fira Code", monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	padding: 1em;
+  background-color: var(--main-background-color);
+  color: var(--main-text-color);
+  font-family: "Fira Code", monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  padding: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
-	color: var(--link-color);
+  color: var(--link-color);
 }
 
 article {
-	max-width: 650px; 
-	margin: 2em auto;
+  max-width: 650px; 
+  margin: 2em auto;
 }
 
-
 h1 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 
 h2 {
-	font-size: 1.5rem;
-	margin-top: 2em;
+  font-size: 1.5rem;
+  margin-top: 2em;
 }
 
 p {
-	font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
-
-/* Hero container: stands out with a subtle background in light mode */
+/* Hero container */
 .hero {
   margin: 2rem auto;
-  padding: var(--block-padding);
+  padding: 2rem;
   border-radius: 8px;
-  background-color: #e3e3e3; /* Slightly darker than white for light mode */
-  text-align: center;        /* Center hero text */
-}
-
-[data-theme="dark"] .hero {
-  background-color: #222;    /* Dark hero for dark mode */
+  background-color: var(--main-container-color);
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .hero h1 {
@@ -81,31 +82,26 @@ p {
 .hero p {
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #555;
-}
-
-[data-theme="dark"] .hero p {
-  color: #bbb;
+  color: inherit;
 }
 
 /* Accent text or links within the hero */
 .hero .highlight {
   color: var(--accent-color);
   font-weight: bold;
+  text-decoration: underline;
 }
 
 /* Code styling for hero snippet */
 .hero code {
   display: inline-block;
-  background: #ccc;
+  background: transparent;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  color: #222;
+  color: var(--accent-color);
   font-family: "JetBrains Mono", monospace;
-}
-[data-theme="dark"] .hero code {
-  background: #444;
-  color: #eee;
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent-color);
 }
 
 /* Generic sections for Projects and Posts */
@@ -126,14 +122,11 @@ p {
 }
 
 .card-list li {
-  background-color: #f3f3f3;
+  background-color: var(--main-container-color);
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 6px;
-}
-
-[data-theme="dark"] .card-list li {
-  background-color: #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .card-list li a {
@@ -144,3 +137,133 @@ p {
 .card-list li strong {
   color: var(--accent-color);
 }
+
+// Dark theme button
+
+.theme-toggle {
+    right: 1rem;
+    position: absolute;
+    top: 1rem;
+    --size: 2rem;
+  
+    background: none;
+    border: none;
+    padding: 0;
+  
+    inline-size: var(--size);
+    block-size: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+  
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  
+    outline-offset: 5px;
+  
+    & > svg {
+      inline-size: 100%;
+      block-size: 100%;
+      stroke-linecap: round;
+    }
+  
+    @nest [data-theme="dark"] & {
+      --icon-fill: hsl(210 10% 70%);
+      --icon-fill-hover: hsl(210 15% 90%);
+    }
+  
+    @media (hover: none) {
+      --size: 48px;
+    }
+  }
+
+  .sun-and-moon {
+    > .sun {
+        --icon-fill-hover: #9e5e1f;
+    }
+    > .sun-beams {
+        --icon-fill-hover: #9e5e1f;
+    }
+    > .moon {
+        --icon-fill-hover: lime;
+    }
+  }
+  
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--accent-color);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--accent-color);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+    --icon-fill-hover: #d9ad30;
+  transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sun-and-moon > .sun {
+    transition: transform .5s var(--ease-elastic-3);
+  }
+
+  .sun-and-moon > .sun-beams {
+    transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+  }
+
+  .sun-and-moon .moon > circle {
+    transition: transform .25s var(--ease-out-5);
+  }
+
+  @supports (cx: 1) {
+    .sun-and-moon .moon > circle {
+      transition: cx .25s var(--ease-out-5);
+    }
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun {
+    transition-timing-function: var(--ease-3);
+    transition-duration: .25s;
+    transform: scale(1.75);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun-beams {
+    transition-duration: .15s;
+    transform: rotateZ(-25deg);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    transition-duration: .5s;
+    transition-delay: .25s;
+  }
+}
+        

@@ -1,53 +1,59 @@
-let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)"); 
-let theme = sessionStorage.getItem('theme');
 
-if (systemInitiatedDark.matches) {
-	document.getElementById("theme-toggle").innerHTML = "Light Mode";
-} else {
-	document.getElementById("theme-toggle").innerHTML = "Dark Mode";
+const storageKey = 'theme-preference'
+
+const onClick = () => {
+    // flip current value
+    theme.value = theme.value === 'light'
+        ? 'dark'
+        : 'light'
+
+    setPreference()
 }
 
-function prefersColorTest(systemInitiatedDark) {
-  if (systemInitiatedDark.matches) {
-  	document.documentElement.setAttribute('data-theme', 'dark');		
-   	document.getElementById("theme-toggle").innerHTML = "Light Mode";
-   	sessionStorage.setItem('theme', '');
-  } else {
-  	document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById("theme-toggle").innerHTML = "Dark Mode";
-    sessionStorage.setItem('theme', '');
-  }
-}
-systemInitiatedDark.addListener(prefersColorTest);
-
-
-function modeSwitcher() {
-	let theme = sessionStorage.getItem('theme');
-	if (theme === "dark") {
-		document.documentElement.setAttribute('data-theme', 'light');
-		sessionStorage.setItem('theme', 'light');
-		document.getElementById("theme-toggle").innerHTML = "Dark Mode";
-	}	else if (theme === "light") {
-		document.documentElement.setAttribute('data-theme', 'dark');
-		sessionStorage.setItem('theme', 'dark');
-		document.getElementById("theme-toggle").innerHTML = "Light Mode";
-	} else if (systemInitiatedDark.matches) {	
-		document.documentElement.setAttribute('data-theme', 'light');
-		sessionStorage.setItem('theme', 'light');
-		document.getElementById("theme-toggle").innerHTML = "Dark Mode";
-	} else {
-		document.documentElement.setAttribute('data-theme', 'dark');
-		sessionStorage.setItem('theme', 'dark');
-		document.getElementById("theme-toggle").innerHTML = "Light Mode";
-	}
+const getColorPreference = () => {
+    if (localStorage.getItem(storageKey))
+        return localStorage.getItem(storageKey)
+    else
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
 }
 
-if (theme === "dark") {
-	document.documentElement.setAttribute('data-theme', 'dark');
-	sessionStorage.setItem('theme', 'dark');
-	document.getElementById("theme-toggle").innerHTML = "Light Mode";
-} else if (theme === "light") {
-	document.documentElement.setAttribute('data-theme', 'light');
-	sessionStorage.setItem('theme', 'light');
-	document.getElementById("theme-toggle").innerHTML = "Dark Mode";
+const setPreference = () => {
+    localStorage.setItem(storageKey, theme.value)
+    reflectPreference()
 }
+
+const reflectPreference = () => {
+    document.firstElementChild
+        .setAttribute('data-theme', theme.value)
+
+    document
+        .querySelector('#theme-toggle')
+        ?.setAttribute('aria-label', theme.value)
+}
+
+const theme = {
+    value: getColorPreference(),
+}
+
+// set early so no page flashes / CSS is made aware
+reflectPreference()
+
+window.onload = () => {
+    // set on load so screen readers can see latest value on the button
+    reflectPreference()
+
+    // now this script can find and listen for clicks on the control
+    document
+        .querySelector('#theme-toggle')
+        .addEventListener('click', onClick)
+}
+
+// sync with system changes
+window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', ({ matches: isDark }) => {
+        theme.value = isDark ? 'dark' : 'light'
+        setPreference()
+    })
