@@ -32,7 +32,7 @@ html[data-theme="dark"] {
 body {
     background-color: var(--main-background-color);
     color: var(--main-text-color);
-    font-family: monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Fira Code', monospace;
     padding: 1em;
 }
 
@@ -99,11 +99,12 @@ p {
 
 /* Code styling for hero snippet */
 .hero code {
+    font-family: 'JetBrains Mono', monospace;
     display: inline-block;
     background: #ccc;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    color: #222;
+    background: #e0e0e0;
 }
 
 [data-theme="dark"] .hero code {
