@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Temp blog post
+title: Temp Blog Post
 date: 2025-03-20
 ---
 # Hello World
